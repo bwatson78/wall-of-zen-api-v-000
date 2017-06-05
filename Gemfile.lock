@@ -49,6 +49,10 @@ GEM
     case_transform (0.2)
       activesupport
     concurrent-ruby (1.0.5)
+    dotenv (2.2.1)
+    dotenv-rails (2.2.1)
+      dotenv (= 2.2.1)
+      railties (>= 3.2, < 5.2)
     erubi (1.6.0)
     ffi (1.9.18)
     globalid (0.4.0)
@@ -135,6 +139,7 @@ PLATFORMS
 DEPENDENCIES
   active_model_serializers
   byebug
+  dotenv-rails
   listen (>= 3.0.5, < 3.2)
   puma (~> 3.7)
   rack-cors
