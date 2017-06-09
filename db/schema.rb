@@ -10,16 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170603151850) do
-
-  create_table "image_tags", force: :cascade do |t|
-    t.integer "image_id"
-    t.integer "tag_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["image_id"], name: "index_image_tags_on_image_id"
-    t.index ["tag_id"], name: "index_image_tags_on_tag_id"
-  end
+ActiveRecord::Schema.define(version: 20170603151548) do
 
   create_table "images", force: :cascade do |t|
     t.string "url"
@@ -30,6 +21,7 @@ ActiveRecord::Schema.define(version: 20170603151850) do
 
   create_table "tags", force: :cascade do |t|
     t.string "tag_name"
+    t.integer "image_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

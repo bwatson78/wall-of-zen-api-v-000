@@ -8,6 +8,7 @@ class ImagesController < ApplicationController
 
   def create
     @image = Image.create(image_params)
+    @image.tags_attributes = params[:tags_attributes]
     @image.save
   end
 
@@ -25,7 +26,7 @@ class ImagesController < ApplicationController
       params.require(:image).permit(
       :url,
       :name,
-      tag_attributes: [:tag_name])
+      tags_attributes: [:tag_name => []])
     end
 
     def load_image
