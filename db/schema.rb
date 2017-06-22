@@ -15,6 +15,7 @@ ActiveRecord::Schema.define(version: 20170603151548) do
   create_table "images", force: :cascade do |t|
     t.string "url"
     t.string "name"
+    t.integer "votecount", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -26,6 +26,7 @@ class ImagesController < ApplicationController
       params.require(:image).permit(
       :url,
       :name,
+      :votecount,
       tags_attributes: [:tag_name => []])
     end
 
