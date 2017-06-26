@@ -10249,3 +10249,473 @@ Processing by ImagesController#index as */*
 Completed 200 OK in 13ms (Views: 11.7ms | ActiveRecord: 0.7ms)
 
 
+Started GET "/images" for 127.0.0.1 at 2017-06-26 07:48:51 -0400
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ImagesController#index as */*
+  [1m[36mImage Load (0.2ms)[0m  [1m[34mSELECT "images".* FROM "images"[0m
+[active_model_serializers]   [1m[36mTag Load (0.3ms)[0m  [1m[34mSELECT "tags".* FROM "tags" WHERE "tags"."image_id" = ?[0m  [["image_id", 1]]
+[active_model_serializers]   [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" WHERE "tags"."image_id" = ?[0m  [["image_id", 2]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (700.23ms)
+Completed 200 OK in 1466ms (Views: 1298.6ms | ActiveRecord: 2.3ms)
+
+
+Started POST "/images" for 127.0.0.1 at 2017-06-26 07:50:51 -0400
+Processing by ImagesController#create as JSON
+  Parameters: {"url"=>"https://i0.wp.com/emzirrimarra.com/wp-content/uploads/2016/08/alexpardee_650.jpg", "name"=>"Artistas del cartel", "tags_attributes"=>{"tag_name"=>["band", "art", "poster"]}, "image"=>{"url"=>"https://i0.wp.com/emzirrimarra.com/wp-content/uploads/2016/08/alexpardee_650.jpg", "name"=>"Artistas del cartel"}}
+  [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (31.7ms)[0m  [1m[32mINSERT INTO "images" ("url", "name", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["url", "https://i0.wp.com/emzirrimarra.com/wp-content/uploads/2016/08/alexpardee_650.jpg"], ["name", "Artistas del cartel"], ["created_at", "2017-06-26 11:50:51.513825"], ["updated_at", "2017-06-26 11:50:51.513825"]]
+  [1m[35m (223.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "tags" ("tag_name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["tag_name", "band"], ["created_at", "2017-06-26 11:50:51.773608"], ["updated_at", "2017-06-26 11:50:51.773608"]]
+  [1m[35m (185.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE "tags" SET "image_id" = ?, "updated_at" = ? WHERE "tags"."id" = ?[0m  [["image_id", 3], ["updated_at", "2017-06-26 11:50:51.964833"], ["id", 7]]
+  [1m[35m (159.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "tags" ("tag_name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["tag_name", "art"], ["created_at", "2017-06-26 11:50:52.129328"], ["updated_at", "2017-06-26 11:50:52.129328"]]
+  [1m[35m (162.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE "tags" SET "image_id" = ?, "updated_at" = ? WHERE "tags"."id" = ?[0m  [["image_id", 3], ["updated_at", "2017-06-26 11:50:52.296243"], ["id", 8]]
+  [1m[35m (173.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "tags" ("tag_name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["tag_name", "poster"], ["created_at", "2017-06-26 11:50:52.473288"], ["updated_at", "2017-06-26 11:50:52.473288"]]
+  [1m[35m (218.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[33mUPDATE "tags" SET "image_id" = ?, "updated_at" = ? WHERE "tags"."id" = ?[0m  [["image_id", 3], ["updated_at", "2017-06-26 11:50:52.696129"], ["id", 9]]
+  [1m[35m (284.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+Completed 204 No Content in 1474ms (ActiveRecord: 1441.6ms)
+
+
+Started PATCH "/images/3" for 127.0.0.1 at 2017-06-26 07:51:11 -0400
+Processing by ImagesController#update as JSON
+  Parameters: {"votecount"=>nil, "id"=>"3", "image"=>{"votecount"=>nil}}
+  [1m[36mImage Load (0.3ms)[0m  [1m[34mSELECT  "images".* FROM "images" WHERE "images"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE "images" SET "votecount" = ?, "updated_at" = ? WHERE "images"."id" = ?[0m  [["votecount", nil], ["updated_at", "2017-06-26 11:51:11.880585"], ["id", 3]]
+  [1m[35m (221.8ms)[0m  [1m[36mcommit transaction[0m
+Completed 204 No Content in 231ms (ActiveRecord: 222.7ms)
+
+
+Started PATCH "/images/3" for 127.0.0.1 at 2017-06-26 07:51:47 -0400
+Processing by ImagesController#update as JSON
+  Parameters: {"votecount"=>nil, "id"=>"3", "image"=>{"votecount"=>nil}}
+  [1m[36mImage Load (0.2ms)[0m  [1m[34mSELECT  "images".* FROM "images" WHERE "images"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+Completed 204 No Content in 3ms (ActiveRecord: 0.5ms)
+
+
+  [1m[36mImage Load (1.5ms)[0m  [1m[34mSELECT  "images".* FROM "images" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mImage Load (0.2ms)[0m  [1m[34mSELECT  "images".* FROM "images" WHERE "images"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[31mDELETE FROM "images" WHERE "images"."id" = ?[0m  [["id", 3]]
+  [1m[35m (366.4ms)[0m  [1m[36mcommit transaction[0m
+Started GET "/images" for 127.0.0.1 at 2017-06-26 07:55:14 -0400
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ImagesController#index as */*
+  [1m[36mImage Load (0.2ms)[0m  [1m[34mSELECT "images".* FROM "images"[0m
+[active_model_serializers]   [1m[36mTag Load (0.3ms)[0m  [1m[34mSELECT "tags".* FROM "tags" WHERE "tags"."image_id" = ?[0m  [["image_id", 1]]
+[active_model_serializers]   [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" WHERE "tags"."image_id" = ?[0m  [["image_id", 2]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (42.74ms)
+Completed 200 OK in 74ms (Views: 66.5ms | ActiveRecord: 2.1ms)
+
+
+Started POST "/images" for 127.0.0.1 at 2017-06-26 07:55:48 -0400
+Processing by ImagesController#create as JSON
+  Parameters: {"url"=>"https://i0.wp.com/emzirrimarra.com/wp-content/uploads/2016/08/alexpardee_650.jpg", "name"=>"Artistas del cartel", "votecount"=>0, "tags_attributes"=>{"tag_name"=>["band", "art", "poster"]}, "image"=>{"url"=>"https://i0.wp.com/emzirrimarra.com/wp-content/uploads/2016/08/alexpardee_650.jpg", "name"=>"Artistas del cartel", "votecount"=>0}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "images" ("url", "name", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["url", "https://i0.wp.com/emzirrimarra.com/wp-content/uploads/2016/08/alexpardee_650.jpg"], ["name", "Artistas del cartel"], ["created_at", "2017-06-26 11:55:48.222306"], ["updated_at", "2017-06-26 11:55:48.222306"]]
+  [1m[35m (249.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "tags" ("tag_name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["tag_name", "band"], ["created_at", "2017-06-26 11:55:48.477202"], ["updated_at", "2017-06-26 11:55:48.477202"]]
+  [1m[35m (327.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE "tags" SET "image_id" = ?, "updated_at" = ? WHERE "tags"."id" = ?[0m  [["image_id", 4], ["updated_at", "2017-06-26 11:55:48.811879"], ["id", 10]]
+  [1m[35m (314.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "tags" ("tag_name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["tag_name", "art"], ["created_at", "2017-06-26 11:55:49.132302"], ["updated_at", "2017-06-26 11:55:49.132302"]]
+  [1m[35m (451.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE "tags" SET "image_id" = ?, "updated_at" = ? WHERE "tags"."id" = ?[0m  [["image_id", 4], ["updated_at", "2017-06-26 11:55:49.589124"], ["id", 11]]
+  [1m[35m (441.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "tags" ("tag_name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["tag_name", "poster"], ["created_at", "2017-06-26 11:55:50.035778"], ["updated_at", "2017-06-26 11:55:50.035778"]]
+  [1m[35m (259.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[33mUPDATE "tags" SET "image_id" = ?, "updated_at" = ? WHERE "tags"."id" = ?[0m  [["image_id", 4], ["updated_at", "2017-06-26 11:55:50.298629"], ["id", 12]]
+  [1m[35m (331.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+Completed 204 No Content in 2414ms (ActiveRecord: 2378.4ms)
+
+
+Started PATCH "/images/3" for 127.0.0.1 at 2017-06-26 07:56:01 -0400
+Processing by ImagesController#update as JSON
+  Parameters: {"votecount"=>nil, "id"=>"3", "image"=>{"votecount"=>nil}}
+  [1m[36mImage Load (0.3ms)[0m  [1m[34mSELECT  "images".* FROM "images" WHERE "images"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+Completed 404 Not Found in 4ms (ActiveRecord: 0.3ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Image with 'id'=3):
+  
+app/controllers/images_controller.rb:34:in `load_image'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (113.0ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (110.6ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateImages (20170603151345)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (1.6ms)[0m  [1m[35mCREATE TABLE "images" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "url" varchar, "name" varchar, "votecount" integer DEFAULT 0, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20170603151345"]]
+  [1m[35m (73.8ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateTags (20170603151548)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "tags" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "tag_name" varchar, "image_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20170603151548"]]
+  [1m[35m (122.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.9ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2017-06-26 12:00:02.264840"], ["updated_at", "2017-06-26 12:00:02.264840"]]
+  [1m[35m (57.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/images" for 127.0.0.1 at 2017-06-26 08:00:32 -0400
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ImagesController#index as */*
+  [1m[36mImage Load (0.3ms)[0m  [1m[34mSELECT "images".* FROM "images"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.25ms)
+Completed 200 OK in 20ms (Views: 10.1ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/images" for 127.0.0.1 at 2017-06-26 08:00:58 -0400
+Processing by ImagesController#create as JSON
+  Parameters: {"url"=>"https://i.ytimg.com/vi/dgdZgPzpLkg/maxresdefault.jpg", "name"=>"Vater Percussion - Tim Alexander - Primus - Interview - YouTube", "votecount"=>0, "tags_attributes"=>{"tag_name"=>["band", "primus"]}, "image"=>{"url"=>"https://i.ytimg.com/vi/dgdZgPzpLkg/maxresdefault.jpg", "name"=>"Vater Percussion - Tim Alexander - Primus - Interview - YouTube", "votecount"=>0}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.9ms)[0m  [1m[32mINSERT INTO "images" ("url", "name", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["url", "https://i.ytimg.com/vi/dgdZgPzpLkg/maxresdefault.jpg"], ["name", "Vater Percussion - Tim Alexander - Primus - Interview - YouTube"], ["created_at", "2017-06-26 12:00:58.220204"], ["updated_at", "2017-06-26 12:00:58.220204"]]
+  [1m[35m (160.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.2ms)[0m  [1m[32mINSERT INTO "tags" ("tag_name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["tag_name", "band"], ["created_at", "2017-06-26 12:00:58.401951"], ["updated_at", "2017-06-26 12:00:58.401951"]]
+  [1m[35m (143.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[33mUPDATE "tags" SET "image_id" = ?, "updated_at" = ? WHERE "tags"."id" = ?[0m  [["image_id", 1], ["updated_at", "2017-06-26 12:00:58.573061"], ["id", 1]]
+  [1m[35m (227.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "tags" ("tag_name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["tag_name", "primus"], ["created_at", "2017-06-26 12:00:58.807565"], ["updated_at", "2017-06-26 12:00:58.807565"]]
+  [1m[35m (131.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[33mUPDATE "tags" SET "image_id" = ?, "updated_at" = ? WHERE "tags"."id" = ?[0m  [["image_id", 1], ["updated_at", "2017-06-26 12:00:58.941811"], ["id", 2]]
+  [1m[35m (185.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+Completed 204 No Content in 923ms (ActiveRecord: 855.1ms)
+
+
+Started PATCH "/images/1" for 127.0.0.1 at 2017-06-26 08:01:04 -0400
+Processing by ImagesController#update as JSON
+  Parameters: {"votecount"=>nil, "id"=>"1", "image"=>{"votecount"=>nil}}
+  [1m[36mImage Load (0.5ms)[0m  [1m[34mSELECT  "images".* FROM "images" WHERE "images"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE "images" SET "votecount" = ?, "updated_at" = ? WHERE "images"."id" = ?[0m  [["votecount", nil], ["updated_at", "2017-06-26 12:01:04.496746"], ["id", 1]]
+  [1m[35m (82.3ms)[0m  [1m[36mcommit transaction[0m
+Completed 204 No Content in 96ms (ActiveRecord: 83.3ms)
+
+
+  [1m[36mImage Load (1.2ms)[0m  [1m[34mSELECT  "images".* FROM "images" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mImage Load (0.2ms)[0m  [1m[34mSELECT  "images".* FROM "images" WHERE "images"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[31mDELETE FROM "images" WHERE "images"."id" = ?[0m  [["id", 1]]
+  [1m[35m (70.6ms)[0m  [1m[36mcommit transaction[0m
+Started POST "/images" for 127.0.0.1 at 2017-06-26 08:08:24 -0400
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ImagesController#create as JSON
+  Parameters: {"url"=>"https://i.ytimg.com/vi/dgdZgPzpLkg/maxresdefault.jpg", "name"=>"Vater Percussion - Tim Alexander - Primus - Interview - YouTube", "votecount"=>0, "tags_attributes"=>{"tag_name"=>["primus", "band"]}, "image"=>{"url"=>"https://i.ytimg.com/vi/dgdZgPzpLkg/maxresdefault.jpg", "name"=>"Vater Percussion - Tim Alexander - Primus - Interview - YouTube", "votecount"=>0}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.8ms)[0m  [1m[32mINSERT INTO "images" ("url", "name", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["url", "https://i.ytimg.com/vi/dgdZgPzpLkg/maxresdefault.jpg"], ["name", "Vater Percussion - Tim Alexander - Primus - Interview - YouTube"], ["created_at", "2017-06-26 12:08:24.964300"], ["updated_at", "2017-06-26 12:08:24.964300"]]
+  [1m[35m (77.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.6ms)[0m  [1m[32mINSERT INTO "tags" ("tag_name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["tag_name", "primus"], ["created_at", "2017-06-26 12:08:25.064415"], ["updated_at", "2017-06-26 12:08:25.064415"]]
+  [1m[35m (65.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE "tags" SET "image_id" = ?, "updated_at" = ? WHERE "tags"."id" = ?[0m  [["image_id", 2], ["updated_at", "2017-06-26 12:08:25.150747"], ["id", 3]]
+  [1m[35m (92.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "tags" ("tag_name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["tag_name", "band"], ["created_at", "2017-06-26 12:08:25.247926"], ["updated_at", "2017-06-26 12:08:25.247926"]]
+  [1m[35m (95.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[33mUPDATE "tags" SET "image_id" = ?, "updated_at" = ? WHERE "tags"."id" = ?[0m  [["image_id", 2], ["updated_at", "2017-06-26 12:08:25.348697"], ["id", 4]]
+  [1m[35m (72.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+Completed 204 No Content in 472ms (ActiveRecord: 409.9ms)
+
+
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (75.4ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (99.5ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateImages (20170603151345)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE TABLE "images" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "url" varchar, "name" varchar, "votecount" integer DEFAULT 0, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20170603151345"]]
+  [1m[35m (106.3ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateTags (20170603151548)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE TABLE "tags" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "tag_name" varchar, "image_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20170603151548"]]
+  [1m[35m (80.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.9ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2017-06-26 12:09:14.133729"], ["updated_at", "2017-06-26 12:09:14.133729"]]
+  [1m[35m (89.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started POST "/images" for 127.0.0.1 at 2017-06-26 08:09:50 -0400
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ImagesController#create as JSON
+  Parameters: {"url"=>"https://i.ytimg.com/vi/dgdZgPzpLkg/maxresdefault.jpg", "name"=>"Vater Percussion - Tim Alexander - Primus - Interview - YouTube", "votecount"=>0, "tags_attributes"=>{"tag_name"=>["band", "primus", ""]}, "image"=>{"url"=>"https://i.ytimg.com/vi/dgdZgPzpLkg/maxresdefault.jpg", "name"=>"Vater Percussion - Tim Alexander - Primus - Interview - YouTube", "votecount"=>0}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.5ms)[0m  [1m[32mINSERT INTO "images" ("url", "name", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["url", "https://i.ytimg.com/vi/dgdZgPzpLkg/maxresdefault.jpg"], ["name", "Vater Percussion - Tim Alexander - Primus - Interview - YouTube"], ["created_at", "2017-06-26 12:09:50.708199"], ["updated_at", "2017-06-26 12:09:50.708199"]]
+  [1m[35m (82.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "tags" ("tag_name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["tag_name", "band"], ["created_at", "2017-06-26 12:09:50.808455"], ["updated_at", "2017-06-26 12:09:50.808455"]]
+  [1m[35m (72.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE "tags" SET "image_id" = ?, "updated_at" = ? WHERE "tags"."id" = ?[0m  [["image_id", 1], ["updated_at", "2017-06-26 12:09:50.900613"], ["id", 1]]
+  [1m[35m (80.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "tags" ("tag_name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["tag_name", "primus"], ["created_at", "2017-06-26 12:09:50.986577"], ["updated_at", "2017-06-26 12:09:50.986577"]]
+  [1m[35m (72.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[33mUPDATE "tags" SET "image_id" = ?, "updated_at" = ? WHERE "tags"."id" = ?[0m  [["image_id", 1], ["updated_at", "2017-06-26 12:09:51.064861"], ["id", 2]]
+  [1m[35m (94.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "tags" ("tag_name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["tag_name", ""], ["created_at", "2017-06-26 12:09:51.163750"], ["updated_at", "2017-06-26 12:09:51.163750"]]
+  [1m[35m (73.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[33mUPDATE "tags" SET "image_id" = ?, "updated_at" = ? WHERE "tags"."id" = ?[0m  [["image_id", 1], ["updated_at", "2017-06-26 12:09:51.241943"], ["id", 3]]
+  [1m[35m (185.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+Completed 204 No Content in 733ms (ActiveRecord: 670.4ms)
+
+
+Started PATCH "/images/1" for 127.0.0.1 at 2017-06-26 08:09:59 -0400
+Processing by ImagesController#update as JSON
+  Parameters: {"votecount"=>nil, "id"=>"1", "image"=>{"votecount"=>nil}}
+  [1m[36mImage Load (0.5ms)[0m  [1m[34mSELECT  "images".* FROM "images" WHERE "images"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.6ms)[0m  [1m[33mUPDATE "images" SET "votecount" = ?, "updated_at" = ? WHERE "images"."id" = ?[0m  [["votecount", nil], ["updated_at", "2017-06-26 12:09:59.848728"], ["id", 1]]
+  [1m[35m (87.8ms)[0m  [1m[36mcommit transaction[0m
+Completed 204 No Content in 101ms (ActiveRecord: 90.4ms)
+
+
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (114.4ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (130.8ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateImages (20170603151345)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE TABLE "images" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "url" varchar, "name" varchar, "votecount" integer DEFAULT 0, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20170603151345"]]
+  [1m[35m (136.4ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateTags (20170603151548)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "tags" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "tag_name" varchar, "image_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20170603151548"]]
+  [1m[35m (95.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.9ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2017-06-26 12:11:38.003395"], ["updated_at", "2017-06-26 12:11:38.003395"]]
+  [1m[35m (78.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/images" for 127.0.0.1 at 2017-06-26 08:11:49 -0400
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ImagesController#index as */*
+  [1m[36mImage Load (0.4ms)[0m  [1m[34mSELECT "images".* FROM "images"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.26ms)
+Completed 200 OK in 22ms (Views: 11.7ms | ActiveRecord: 0.9ms)
+
+
+Started POST "/images" for 127.0.0.1 at 2017-06-26 08:12:14 -0400
+Processing by ImagesController#create as JSON
+  Parameters: {"url"=>"https://i.ytimg.com/vi/dgdZgPzpLkg/maxresdefault.jpg", "name"=>"Vater Percussion - Tim Alexander - Primus - Interview - YouTube", "votecount"=>0, "tags_attributes"=>{"tag_name"=>["band", "primus"]}, "image"=>{"url"=>"https://i.ytimg.com/vi/dgdZgPzpLkg/maxresdefault.jpg", "name"=>"Vater Percussion - Tim Alexander - Primus - Interview - YouTube", "votecount"=>0}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "images" ("url", "name", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["url", "https://i.ytimg.com/vi/dgdZgPzpLkg/maxresdefault.jpg"], ["name", "Vater Percussion - Tim Alexander - Primus - Interview - YouTube"], ["created_at", "2017-06-26 12:12:14.612045"], ["updated_at", "2017-06-26 12:12:14.612045"]]
+  [1m[35m (105.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "tags" ("tag_name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["tag_name", "band"], ["created_at", "2017-06-26 12:12:14.735884"], ["updated_at", "2017-06-26 12:12:14.735884"]]
+  [1m[35m (104.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.4ms)[0m  [1m[33mUPDATE "tags" SET "image_id" = ?, "updated_at" = ? WHERE "tags"."id" = ?[0m  [["image_id", 1], ["updated_at", "2017-06-26 12:12:14.861933"], ["id", 1]]
+  [1m[35m (98.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "tags" ("tag_name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["tag_name", "primus"], ["created_at", "2017-06-26 12:12:14.968019"], ["updated_at", "2017-06-26 12:12:14.968019"]]
+  [1m[35m (106.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE "tags" SET "image_id" = ?, "updated_at" = ? WHERE "tags"."id" = ?[0m  [["image_id", 1], ["updated_at", "2017-06-26 12:12:15.079464"], ["id", 2]]
+  [1m[35m (161.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+Completed 204 No Content in 645ms (ActiveRecord: 581.3ms)
+
+
+  [1m[36mImage Load (1.1ms)[0m  [1m[34mSELECT  "images".* FROM "images" LIMIT ?[0m  [["LIMIT", 11]]
+Started GET "/images" for 127.0.0.1 at 2017-06-26 08:15:42 -0400
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ImagesController#index as */*
+  [1m[36mImage Load (0.3ms)[0m  [1m[34mSELECT "images".* FROM "images"[0m
+[active_model_serializers]   [1m[36mTag Load (0.3ms)[0m  [1m[34mSELECT "tags".* FROM "tags" WHERE "tags"."image_id" = ?[0m  [["image_id", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (38.04ms)
+Completed 200 OK in 81ms (Views: 69.1ms | ActiveRecord: 2.5ms)
+
+
+Started PATCH "/images/1" for 127.0.0.1 at 2017-06-26 08:16:24 -0400
+Processing by ImagesController#update as JSON
+  Parameters: {"votecount"=>1, "id"=>"1", "image"=>{"votecount"=>1}}
+  [1m[36mImage Load (0.3ms)[0m  [1m[34mSELECT  "images".* FROM "images" WHERE "images"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[33mUPDATE "images" SET "votecount" = ?, "updated_at" = ? WHERE "images"."id" = ?[0m  [["votecount", 1], ["updated_at", "2017-06-26 12:16:24.315365"], ["id", 1]]
+  [1m[35m (97.7ms)[0m  [1m[36mcommit transaction[0m
+Completed 204 No Content in 111ms (ActiveRecord: 99.2ms)
+
+
+Started PATCH "/images/1" for 127.0.0.1 at 2017-06-26 08:16:28 -0400
+Processing by ImagesController#update as JSON
+  Parameters: {"votecount"=>2, "id"=>"1", "image"=>{"votecount"=>2}}
+  [1m[36mImage Load (0.1ms)[0m  [1m[34mSELECT  "images".* FROM "images" WHERE "images"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[33mUPDATE "images" SET "votecount" = ?, "updated_at" = ? WHERE "images"."id" = ?[0m  [["votecount", 2], ["updated_at", "2017-06-26 12:16:28.872608"], ["id", 1]]
+  [1m[35m (98.9ms)[0m  [1m[36mcommit transaction[0m
+Completed 204 No Content in 104ms (ActiveRecord: 99.5ms)
+
+
+Started GET "/images" for 127.0.0.1 at 2017-06-26 08:16:39 -0400
+Processing by ImagesController#index as */*
+  [1m[36mImage Load (0.2ms)[0m  [1m[34mSELECT "images".* FROM "images"[0m
+[active_model_serializers]   [1m[36mTag Load (0.5ms)[0m  [1m[34mSELECT "tags".* FROM "tags" WHERE "tags"."image_id" = ?[0m  [["image_id", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (5.24ms)
+Completed 200 OK in 7ms (Views: 6.1ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/images" for 127.0.0.1 at 2017-06-26 08:17:26 -0400
+Processing by ImagesController#create as JSON
+  Parameters: {"url"=>"https://i0.wp.com/emzirrimarra.com/wp-content/uploads/2016/08/alexpardee_650.jpg", "name"=>"Artistas del cartel", "votecount"=>0, "tags_attributes"=>{"tag_name"=>["primus", "band", "poster", "art"]}, "image"=>{"url"=>"https://i0.wp.com/emzirrimarra.com/wp-content/uploads/2016/08/alexpardee_650.jpg", "name"=>"Artistas del cartel", "votecount"=>0}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "images" ("url", "name", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["url", "https://i0.wp.com/emzirrimarra.com/wp-content/uploads/2016/08/alexpardee_650.jpg"], ["name", "Artistas del cartel"], ["created_at", "2017-06-26 12:17:26.238976"], ["updated_at", "2017-06-26 12:17:26.238976"]]
+  [1m[35m (91.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "tags" ("tag_name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["tag_name", "primus"], ["created_at", "2017-06-26 12:17:26.334799"], ["updated_at", "2017-06-26 12:17:26.334799"]]
+  [1m[35m (94.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[33mUPDATE "tags" SET "image_id" = ?, "updated_at" = ? WHERE "tags"."id" = ?[0m  [["image_id", 2], ["updated_at", "2017-06-26 12:17:26.435327"], ["id", 3]]
+  [1m[35m (94.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "tags" ("tag_name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["tag_name", "band"], ["created_at", "2017-06-26 12:17:26.534961"], ["updated_at", "2017-06-26 12:17:26.534961"]]
+  [1m[35m (84.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE "tags" SET "image_id" = ?, "updated_at" = ? WHERE "tags"."id" = ?[0m  [["image_id", 2], ["updated_at", "2017-06-26 12:17:26.621979"], ["id", 4]]
+  [1m[35m (83.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "tags" ("tag_name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["tag_name", "poster"], ["created_at", "2017-06-26 12:17:26.712039"], ["updated_at", "2017-06-26 12:17:26.712039"]]
+  [1m[35m (86.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[33mUPDATE "tags" SET "image_id" = ?, "updated_at" = ? WHERE "tags"."id" = ?[0m  [["image_id", 2], ["updated_at", "2017-06-26 12:17:26.801493"], ["id", 5]]
+  [1m[35m (84.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "tags" ("tag_name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["tag_name", "art"], ["created_at", "2017-06-26 12:17:26.889561"], ["updated_at", "2017-06-26 12:17:26.889561"]]
+  [1m[35m (95.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE "tags" SET "image_id" = ?, "updated_at" = ? WHERE "tags"."id" = ?[0m  [["image_id", 2], ["updated_at", "2017-06-26 12:17:26.990121"], ["id", 6]]
+  [1m[35m (83.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+Completed 204 No Content in 842ms (ActiveRecord: 801.7ms)
+
+
+Started GET "/images" for 127.0.0.1 at 2017-06-26 08:18:28 -0400
+Processing by ImagesController#index as */*
+  [1m[36mImage Load (0.3ms)[0m  [1m[34mSELECT "images".* FROM "images"[0m
+[active_model_serializers]   [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" WHERE "tags"."image_id" = ?[0m  [["image_id", 1]]
+[active_model_serializers]   [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" WHERE "tags"."image_id" = ?[0m  [["image_id", 2]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (11.27ms)
+Completed 200 OK in 14ms (Views: 12.9ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/images" for 127.0.0.1 at 2017-06-26 08:20:08 -0400
+Processing by ImagesController#index as */*
+  [1m[36mImage Load (0.5ms)[0m  [1m[34mSELECT "images".* FROM "images"[0m
+[active_model_serializers]   [1m[36mTag Load (0.3ms)[0m  [1m[34mSELECT "tags".* FROM "tags" WHERE "tags"."image_id" = ?[0m  [["image_id", 1]]
+[active_model_serializers]   [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" WHERE "tags"."image_id" = ?[0m  [["image_id", 2]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (12.13ms)
+Completed 200 OK in 15ms (Views: 13.6ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/images" for 127.0.0.1 at 2017-06-26 08:21:09 -0400
+Processing by ImagesController#index as */*
+  [1m[36mImage Load (0.5ms)[0m  [1m[34mSELECT "images".* FROM "images"[0m
+[active_model_serializers]   [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" WHERE "tags"."image_id" = ?[0m  [["image_id", 1]]
+[active_model_serializers]   [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" WHERE "tags"."image_id" = ?[0m  [["image_id", 2]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (11.37ms)
+Completed 200 OK in 14ms (Views: 12.8ms | ActiveRecord: 1.0ms)
+
+
+Started POST "/images" for 127.0.0.1 at 2017-06-26 08:21:49 -0400
+Processing by ImagesController#create as JSON
+  Parameters: {"url"=>"https://yt3.ggpht.com/-mM0ZWZYc-Kc/AAAAAAAAAAI/AAAAAAAAAAA/HgtEqKEOua8/s900-c-k-no-mo-rj-c0xffffff/photo.jpg", "name"=>"moshspeggeti - YouTube", "votecount"=>0, "tags_attributes"=>{"tag_name"=>["primus", "album", "cover"]}, "image"=>{"url"=>"https://yt3.ggpht.com/-mM0ZWZYc-Kc/AAAAAAAAAAI/AAAAAAAAAAA/HgtEqKEOua8/s900-c-k-no-mo-rj-c0xffffff/photo.jpg", "name"=>"moshspeggeti - YouTube", "votecount"=>0}}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.2ms)[0m  [1m[32mINSERT INTO "images" ("url", "name", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["url", "https://yt3.ggpht.com/-mM0ZWZYc-Kc/AAAAAAAAAAI/AAAAAAAAAAA/HgtEqKEOua8/s900-c-k-no-mo-rj-c0xffffff/photo.jpg"], ["name", "moshspeggeti - YouTube"], ["created_at", "2017-06-26 12:21:49.263153"], ["updated_at", "2017-06-26 12:21:49.263153"]]
+  [1m[35m (101.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "tags" ("tag_name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["tag_name", "primus"], ["created_at", "2017-06-26 12:21:49.369629"], ["updated_at", "2017-06-26 12:21:49.369629"]]
+  [1m[35m (84.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE "tags" SET "image_id" = ?, "updated_at" = ? WHERE "tags"."id" = ?[0m  [["image_id", 3], ["updated_at", "2017-06-26 12:21:49.460549"], ["id", 7]]
+  [1m[35m (82.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "tags" ("tag_name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["tag_name", "album"], ["created_at", "2017-06-26 12:21:49.547792"], ["updated_at", "2017-06-26 12:21:49.547792"]]
+  [1m[35m (150.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[33mUPDATE "tags" SET "image_id" = ?, "updated_at" = ? WHERE "tags"."id" = ?[0m  [["image_id", 3], ["updated_at", "2017-06-26 12:21:49.703283"], ["id", 8]]
+  [1m[35m (107.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "tags" ("tag_name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["tag_name", "cover"], ["created_at", "2017-06-26 12:21:49.814423"], ["updated_at", "2017-06-26 12:21:49.814423"]]
+  [1m[35m (95.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[33mUPDATE "tags" SET "image_id" = ?, "updated_at" = ? WHERE "tags"."id" = ?[0m  [["image_id", 3], ["updated_at", "2017-06-26 12:21:49.915293"], ["id", 9]]
+  [1m[35m (93.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+Completed 204 No Content in 753ms (ActiveRecord: 718.9ms)
+
+
+Started PATCH "/images/3" for 127.0.0.1 at 2017-06-26 08:21:57 -0400
+Processing by ImagesController#update as JSON
+  Parameters: {"votecount"=>1, "id"=>"3", "image"=>{"votecount"=>1}}
+  [1m[36mImage Load (0.5ms)[0m  [1m[34mSELECT  "images".* FROM "images" WHERE "images"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  [1m[33mUPDATE "images" SET "votecount" = ?, "updated_at" = ? WHERE "images"."id" = ?[0m  [["votecount", 1], ["updated_at", "2017-06-26 12:21:57.667040"], ["id", 3]]
+  [1m[35m (97.5ms)[0m  [1m[36mcommit transaction[0m
+Completed 204 No Content in 104ms (ActiveRecord: 99.0ms)
+
+
+Started PATCH "/images/3" for 127.0.0.1 at 2017-06-26 08:22:17 -0400
+Processing by ImagesController#update as JSON
+  Parameters: {"votecount"=>2, "id"=>"3", "image"=>{"votecount"=>2}}
+  [1m[36mImage Load (0.2ms)[0m  [1m[34mSELECT  "images".* FROM "images" WHERE "images"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE "images" SET "votecount" = ?, "updated_at" = ? WHERE "images"."id" = ?[0m  [["votecount", 2], ["updated_at", "2017-06-26 12:22:17.644128"], ["id", 3]]
+  [1m[35m (76.5ms)[0m  [1m[36mcommit transaction[0m
+Completed 204 No Content in 84ms (ActiveRecord: 77.2ms)
+
+
+Started GET "/images" for 127.0.0.1 at 2017-06-26 08:22:25 -0400
+Processing by ImagesController#index as */*
+  [1m[36mImage Load (0.3ms)[0m  [1m[34mSELECT "images".* FROM "images"[0m
+[active_model_serializers]   [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" WHERE "tags"."image_id" = ?[0m  [["image_id", 1]]
+[active_model_serializers]   [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" WHERE "tags"."image_id" = ?[0m  [["image_id", 2]]
+[active_model_serializers]   [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" WHERE "tags"."image_id" = ?[0m  [["image_id", 3]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (40.96ms)
+Completed 200 OK in 44ms (Views: 42.3ms | ActiveRecord: 1.0ms)
+
+
